@@ -84,16 +84,16 @@ resolve_preset_path() {
         return
     fi
     
-    # Check for category/version format (e.g., "api 12" or "api/12.json")
-    if [[ "$preset_input" =~ ^[a-z-]+/[0-9]+\.json$ ]]; then
+    # Check for category/version format (e.g., "api 12", "filament v5", "starter-kits vue", or "api/12.json")
+    if [[ "$preset_input" =~ ^[a-z-]+/[a-z0-9-]+\.json$ ]]; then
         # Already in category/version.json format
         local preset_file="$PRESETS_DIR/$preset_input"
         echo "$preset_file"
         return
     fi
     
-    if [[ "$preset_input" =~ ^[a-z-]+[[:space:]]+[0-9]+$ ]]; then
-        # category version format (e.g., "api 12")
+    if [[ "$preset_input" =~ ^[a-z-]+[[:space:]]+[a-z0-9-]+$ ]]; then
+        # category version format (e.g., "api 12", "filament v5", "starter-kits vue")
         local category=$(echo "$preset_input" | awk '{print $1}')
         local version=$(echo "$preset_input" | awk '{print $2}')
         local preset_file="$PRESETS_DIR/${category}/${version}.json"
