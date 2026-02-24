@@ -467,40 +467,40 @@ main() {
             sync_presets "true"
             ;;
         --validate)
-            if [ -z "$2" ]; then
+            if [ -z "$2" ] || [ -z "$3" ]; then
                 print_error "Please specify preset"
                 print_info "Format: --validate <category> <version>"
                 print_info "Example: --validate api 12"
                 exit 1
             fi
-            validate_preset "$2"
+            validate_preset "$2 $3"
             ;;
         --parse)
-            if [ -z "$2" ]; then
+            if [ -z "$2" ] || [ -z "$3" ]; then
                 print_error "Please specify preset"
                 print_info "Format: --parse <category> <version>"
                 print_info "Example: --parse api 12"
                 exit 1
             fi
-            parse_preset "$2"
+            parse_preset "$2 $3"
             ;;
         --check)
-            if [ -z "$2" ]; then
+            if [ -z "$2" ] || [ -z "$3" ]; then
                 print_error "Please specify preset"
                 print_info "Format: --check <category> <version>"
                 print_info "Example: --check api 12"
                 exit 1
             fi
-            check_dependencies_compatibility "$2"
+            check_dependencies_compatibility "$2 $3"
             ;;
         --summary)
-            if [ -z "$2" ]; then
+            if [ -z "$2" ] || [ -z "$3" ]; then
                 print_error "Please specify preset"
                 print_info "Format: --summary <category> <version>"
                 print_info "Example: --summary api 12"
                 exit 1
             fi
-            generate_summary "$2"
+            generate_summary "$2 $3"
             ;;
         --help)
             show_help
