@@ -1,0 +1,38 @@
+{
+    "cache_dir": ".cache",
+    "cache_enabled": true,
+    "current_version": "12.x",
+    "default_branch":
+    {
+        "10.x": "10.x",
+        "11.x": "11.x",
+        "12.x": "12.x"
+    },
+    "features":
+    {
+        "config_templates": true,
+        "dev_scripts": true,
+        "multi_version": true,
+        "package_management": true,
+        "presets": true,
+        "version_switching": true
+    },
+    "github_repo": "laravel/docs",
+    "last_updated": "2026-02-24",
+    "presets":
+    {
+        "auto_sync": false,
+        "enabled": true,
+        "local_dir": "templates/presets",
+        "repository": "https://github.com/x-multibyte/laravel-dev-presets",
+        "schema_file": "config/preset-schema.json",
+        "sync_interval": 86400
+    },
+    "skill_version": "2.1.0",
+    "supported_versions":
+    [
+        "10.x",
+        "11.x",
+        "12.x"
+    ]
+}
