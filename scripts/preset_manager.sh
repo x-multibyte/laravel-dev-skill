@@ -33,7 +33,7 @@ if [ -f "$CONFIG_FILE" ]; then
     if command -v jq &> /dev/null; then
         PRESETS_REPO=$(jq -r '.presets.repository // empty' "$CONFIG_FILE")
     else
-        PRESETS_REPO=$(grep -oP '(?<="repository": ")[^"]*' "$CONFIG_FILE" | head -1)
+        PRESETS_REPO=$(awk -F'"' '/repository/ {print $4; exit}' "$CONFIG_FILE")
     fi
 fi
 
@@ -287,7 +287,7 @@ check_dependencies_compatibility() {
     # Check Composer
     if [ "$composer_required" != "null" ]; then
         if command -v composer &> /dev/null; then
-            local composer_version=$(composer --version | grep -oP '\d+\.\d+')
+            local composer_version=$(composer --version | awk '{print $3}' | cut -d. -f1,2)
             print_info "  Composer version: $composer_version (required: $composer_required)"
         else
             issues+=("Composer not installed")
